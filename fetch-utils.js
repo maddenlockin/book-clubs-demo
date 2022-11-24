@@ -35,6 +35,12 @@ export async function getBookClubs() {
     return checkError(response);
 }
 
+export async function createMember(member) {
+    const response = await client.from('members').insert(member);
+
+    return checkError(response);
+}
+
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
 }
