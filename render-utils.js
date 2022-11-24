@@ -8,7 +8,6 @@ export function renderBookClub(club) {
     const membersEl = document.createElement('ul');
 
     clubEl.append(nameEl, membersEl);
-    console.log('club', club);
 
     for (let member of club.members) {
         const memberEl = document.createElement('li');
