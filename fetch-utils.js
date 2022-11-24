@@ -1,5 +1,6 @@
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_URL = 'https://vmhclpevfecxhpxwubhs.supabase.co';
+const SUPABASE_KEY =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZtaGNscGV2ZmVjeGhweHd1YmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTI5Nzk4MzgsImV4cCI6MTk2ODU1NTgzOH0.pWvGlCrbKNRZWBKDRsPR8rGxu8nodj7nq8cY1rPNglI';
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
@@ -27,3 +28,13 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+
+export async function getBookClubs() {
+    const response = await client.from('book_clubs').select('*');
+    // give me every property (that's the *) for workshops. Also, for each workshop, give me any workshop participant who has this workshop as a foreign key.
+    return checkError(response);
+}
+
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
+}
