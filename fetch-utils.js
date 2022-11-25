@@ -41,6 +41,12 @@ export async function createMember(member) {
     return checkError(response);
 }
 
+export async function deleteMember(memberId) {
+    const response = await client.from('members').delete().match({ id: memberId }).single();
+
+    return checkError(response);
+}
+
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
 }
