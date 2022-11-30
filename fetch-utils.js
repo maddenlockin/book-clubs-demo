@@ -32,6 +32,7 @@ export async function signOutUser() {
 export async function getBookClubs() {
     const response = await client.from('book_clubs').select('*, members (*)');
     // give me every property (that's the *) for workshops. Also, for each workshop, give me any workshop participant who has this workshop as a foreign key.
+    console.log('response.data', response.data);
     return checkError(response);
 }
 
